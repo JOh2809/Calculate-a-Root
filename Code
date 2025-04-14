@@ -1,0 +1,69 @@
+# Name: Kane John
+# UMD ID: 5824629
+
+# Prompt user for input value
+x = float(input("Enter a value to find its root: "))
+
+# Replace this with your actual UMD ID third digit
+UMD_ID_THIRD_DIGIT = 3
+
+# Determine the root power based on the third digit of UMD ID
+if UMD_ID_THIRD_DIGIT == 0 or UMD_ID_THIRD_DIGIT == 3 or UMD_ID_THIRD_DIGIT == 6 or UMD_ID_THIRD_DIGIT == 9:
+    power = 2  # Square root
+elif UMD_ID_THIRD_DIGIT == 1 or UMD_ID_THIRD_DIGIT == 4 or UMD_ID_THIRD_DIGIT == 7:
+    power = 3  # Cube root
+else:
+    power = 4  # Fourth root
+
+# Set initial lower and upper bounds
+lower = 0
+upper = x
+threshold = 0.0001  # Precision limit
+
+# Use while loop to approximate the root
+while True:
+    guess = (lower + upper) / 2
+    prediction = 1  # Initialize prediction
+
+    # Multiply guess by itself 'power' times (since we can't use **)
+    count = 0
+    while count < power:
+        prediction = prediction * guess
+        count = count + 1
+
+    # Check if the approximation is close enough
+    if prediction > x:
+        if prediction - x < threshold:
+            break
+        else:
+            upper = guess  # Adjust upper bound
+    else:
+        if x - prediction < threshold:
+            break
+        else:
+            lower = guess  # Adjust lower bound
+
+# Print the result
+print("The", power, "root of", x, "is approximately", guess)
+
+
+For 10 
+Enter a value to find its root:  10 
+The 4 root of 10.0 is approximately 1.7782783508300781
+
+For 100 
+Enter a value to find its root: 100 
+The 4 root of 100.0 is approximately 3.1622782349586487
+
+for umd id 
+
+
+Enter a value to find its root: 2 
+The 4 root of 2.0 is approximately 1.189208984375
+for umd id   
+Enter a value to find its root: 4 
+The 4 root of 4.0 is approximately 1.414215087890625
+
+
+
+ 
